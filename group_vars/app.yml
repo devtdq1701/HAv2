@@ -1,0 +1,32 @@
+master_ip: 192.168.0.237
+backup_ip: 192.168.0.239
+
+nginx_port: 9000
+haproxy_front_port: 80
+haproxy_stats_port: 2000
+
+# keepalived configuration
+
+master:
+  interface: enp0s3
+  virtual_router_id: 51
+  priority: 100
+  auth_type: PASS
+  auth_pass: 1111
+  virtual_ipaddress: '192.168.0.240/24'
+
+backup:
+  interface: enp0s3
+  virtual_router_id: 51
+  priority: 99
+  auth_type: PASS
+  auth_pass: 1111
+  virtual_ipaddress: '192.168.0.240/24'
+
+# haproxy configuration
+
+haproxy:
+  stats_uri: /stats
+  weight: 1
+  stats_username: interits
+  stats_password: quang12345

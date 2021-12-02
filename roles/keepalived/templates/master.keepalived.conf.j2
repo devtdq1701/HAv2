@@ -1,0 +1,29 @@
+! Configuration File for keepalived
+vrrp_script chk_nginx {
+    script "pidof nginx"
+    interval 2
+    weight 2
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface {{ master.interface }}
+    virtual_router_id {{ master.virtual_router_id }}
+    priority {{ master.priority }}
+    unicast_src_ip {{ master_ip }}
+    unicast_peer {
+        {{ backup_ip }}
+    }
+    advert_int 1
+    authentication {
+        auth_type {{ master.auth_type }}
+        auth_pass {{ master.auth_pass }}
+    }
+    virtual_ipaddress {
+        {{ master.virtual_ipaddress }} dev {{ master.interface }}
+    }
+    track_script {
+        chk_nginx
+    }
+}
+

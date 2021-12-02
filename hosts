@@ -1,0 +1,7 @@
+[web]
+web1 ansible_host=192.168.5.184 ansible_user=quangtran ansible_password=quang12345 ansible_port=34567
+web2 ansible_host=192.168.5.185 ansible_user=quangtran ansible_password=quang12345 ansible_port=34567
+
+[app]
+app1 ansible_host=192.168.5.237 ansible_user=quangtran ansible_password=quang12345 ansible_port=34567
+app2 ansible_host=192.168.5.238 ansible_user=quangtran ansible_password=quang12345 ansible_port=34567

@@ -1,0 +1,20 @@
+---
+- hosts: app
+  become: yes
+  become_method: sudo
+  roles:
+    - role: firewalld
+      tags:
+      - firewalld
+
+    - role: nginx
+      tags:
+      - nginx
+
+    - role: keepalived
+      tags:
+      - keepalived
+
+    - role: haproxy
+      tags:
+      - haproxy
